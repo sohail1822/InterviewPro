@@ -5,12 +5,12 @@ import { analyzeResume, finishInterview, generateQuestion, submitAnswer } from "
 
 
 
-const interviewRouter = express.Router();
+const interviewRouter = express.Router()
 
 interviewRouter.post("/resume", isAuth, upload.single("resume"), analyzeResume)
-interviewRouter.post("/generate-questions", isAuth, generateQuestion);
-interviewRouter.post("/submit-answer", isAuth, submitAnswer);
-interviewRouter.post("/finish", isAuth, finishInterview);
+interviewRouter.post("/generate-questions", isAuth, generateQuestion)
+interviewRouter.post("/submit-answer", isAuth, submitAnswer)
+interviewRouter.post("/finish", isAuth, finishInterview)
 
 
 
