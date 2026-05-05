@@ -3,6 +3,9 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
 import InterviewPage from './pages/InterviewPage.jsx'
+import InterviewHistory from './pages/InterviewHistory.jsx'
+import Pricing from './pages/Pricing.jsx'
+import InterviewReport from './pages/InterviewReport.jsx'
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -30,6 +33,9 @@ function App() {
       <Route path='/' element={<Home />} />
       <Route path='/auth' element={<Auth />} />
       <Route path='/interview' element={<InterviewPage />} />
+      <Route path='/history' element={<InterviewHistory />} />
+      <Route path='/pricing' element={<Pricing/>}/>
+      <Route path='/report/:id' element={<InterviewReport/>}/>
     </Routes>
   )
 }
