@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUserData } from './redux/userSlice.js';
 
-export const ServerUrl = 'http://localhost:5000';
+export const ServerUrl = 'https://interviewpro-rp0p.onrender.com';
 
 function App() {
 
