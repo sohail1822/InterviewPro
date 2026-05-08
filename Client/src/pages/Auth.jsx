@@ -4,7 +4,7 @@ import { RiSparkling2Fill } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
 import { axisEqualsRounded, motion } from "motion/react"
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../utlis/firebase';
+import { auth, provider } from '../utils/firebase';
 import axios from 'axios';
 import { ServerUrl } from '../App';
 import { useDispatch } from 'react-redux';
