@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ServerUrl } from "../App";
@@ -25,29 +25,29 @@ function InterviewHistory() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-emerald-50 py-10">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-emerald-50 dark:from-[#111113] dark:to-[#1a1b1e] py-10">
       <div className="w-[90vw] lg:w-[70vw] max-w-[90%] mx-auto">
         <div className="mb-10 w-full flex items-start gap-4 flex-wrap">
           <button
             onClick={() => navigate("/")}
-            className="mt-1 p-3 rounded-full bg-white shadow hover:shadow-md transition"
+            className="mt-1 p-3 rounded-full bg-white dark:bg-[#222428] shadow hover:shadow-md transition"
           >
             <FaArrowLeft className="text-gray-600" />
           </button>
 
           <div>
-            <h1 className="text-3xl font-bold flex-nowrap text-gray-800">
+            <h1 className="text-3xl font-bold flex-nowrap text-gray-800 dark:text-[#f1f2f5]">
               Interview History
             </h1>
-            <p className="text-gray-500 mt-2">
+            <p className="text-gray-500 dark:text-[#9499a8] mt-2">
               Track your past interviews and performance reports
             </p>
           </div>
         </div>
 
         {interviews.length === 0 ? (
-          <div className="bg-white p-10 rounded-2xl shadow text-center">
-            <p className="text-gray-500">
+          <div className="bg-white dark:bg-[#222428] p-10 rounded-2xl shadow text-center">
+            <p className="text-gray-500 dark:text-[#9499a8]">
               No interviews found. Start your first interview.
             </p>
           </div>
@@ -57,19 +57,19 @@ function InterviewHistory() {
               <div
                 key={index}
                 onClick={() => navigate(`/report/${item._id}`)}
-                className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
+                className="bg-white dark:bg-[#222428] p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 dark:border-[#2e3038]"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="text-lg font-semibold text-gray-800 dark:text-[#f1f2f5]">
                       {item.role}
                     </h3>
 
-                    <p className="text-gray-500 text-sm mt-1">
+                    <p className="text-gray-500 dark:text-[#9499a8] text-sm mt-1">
                       {item.experience} • {item.mode}
                     </p>
 
-                    <p className="text-xs text-gray-400 mt-2">
+                    <p className="text-xs text-gray-400 dark:text-[#5f6370] mt-2">
                       {new Date(item.createdAt).toLocaleDateString()}
                     </p>
                   </div>
@@ -105,3 +105,6 @@ function InterviewHistory() {
 }
 
 export default InterviewHistory;
+
+
+

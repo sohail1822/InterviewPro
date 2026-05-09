@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { FaArrowLeft, FaCheckCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
@@ -15,10 +15,10 @@ function Pricing() {
   const plans = [
     {
       id: "free",
-      name: "Free",
+      name: "Basic",
       price: "₹0",
       credits: 100,
-      description: "Perfect for beginners starting interview preparation.",
+      description: "Ideal for beginners initiating their interview preparation journey.",
       features: [
         "100 AI Interview Credits",
         "Basic Performance Report",
@@ -29,10 +29,10 @@ function Pricing() {
     },
     {
       id: "basic",
-      name: "Starter Pack",
+      name: "Starter Tier",
       price: "₹100",
       credits: 150,
-      description: "Great for focused practice and skill improvement.",
+      description: "Optimal for focused practice and targeted skill enhancement.",
       features: [
         "150 AI Interview Credits",
         "Detailed Feedback",
@@ -42,10 +42,10 @@ function Pricing() {
     },
     {
       id: "pro",
-      name: "Pro Pack",
+      name: "Professional Tier",
       price: "₹500",
       credits: 650,
-      description: "Best value for serious job preparation.",
+      description: "The most comprehensive package for rigorous job market preparation.",
       features: [
         "650 AI Interview Credits",
         "Advanced AI Feedback",
@@ -107,19 +107,19 @@ function Pricing() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-emerald-50 py-16 px-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-emerald-50 dark:from-[#111113] dark:to-[#1a1b1e] py-16 px-6">
       <div className="max-w-6xl mx-auto mb-14 flex items-start gap-4">
         <button
           onClick={() => navigate("/")}
-          className="mt-2 p-3 rounded-full bg-white shadow hover:shadow-md transition"
+          className="mt-2 p-3 rounded-full bg-white dark:bg-[#222428] shadow hover:shadow-md transition"
         >
           <FaArrowLeft className="text-gray-600" />
         </button>
 
         <div className="text-center w-full">
-          <h1 className="text-4xl font-bold text-gray-800">Choose Your Plan</h1>
-          <p className="text-gray-500 mt-3 text-lg">
-            Flexible pricing to match your interview preparation goals.
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-[#f1f2f5]">Select Your Subscription Plan</h1>
+          <p className="text-gray-500 dark:text-[#9499a8] mt-3 text-lg">
+            Flexible pricing tiers designed to align with your interview preparation goals.
           </p>
         </div>
       </div>
@@ -136,8 +136,8 @@ function Pricing() {
               className={`relative rounded-3xl p-8 transition-all duration-300 border 
                 ${
                   isSelected
-                    ? "border-emerald-600 shadow-2xl bg-white"
-                    : "border-gray-200 bg-white shadow-md"
+                    ? "border-emerald-600 shadow-2xl bg-white dark:bg-[#222428]"
+                    : "border-[#e2e4ea] dark:border-[#2e3038] bg-white dark:bg-[#222428] shadow-md"
                 }
                 ${plan.default ? "cursor-default" : "cursor-pointer"}
               `}
@@ -151,13 +151,13 @@ function Pricing() {
 
               {/* Default Tag */}
               {plan.default && (
-                <div className="absolute top-6 right-6 bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full">
+                <div className="absolute top-6 right-6 bg-gray-200 dark:bg-[#2a2d33] text-gray-700 dark:text-[#c8ccd8] text-xs px-3 py-1 rounded-full">
                   Default
                 </div>
               )}
 
               {/* Plan Name */}
-              <h3 className="text-xl font-semibold text-gray-800">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-[#f1f2f5]">
                 {plan.name}
               </h3>
 
@@ -166,11 +166,11 @@ function Pricing() {
                 <span className="text-3xl font-bold text-emerald-600">
                   {plan.price}
                 </span>
-                <p className="text-gray-500 mt-1">{plan.credits} Credits</p>
+                <p className="text-gray-500 dark:text-[#9499a8] mt-1">{plan.credits} Credits</p>
               </div>
 
               {/* Description */}
-              <p className="text-gray-500 mt-4 text-sm leading-relaxed">
+              <p className="text-gray-500 dark:text-[#9499a8] mt-4 text-sm leading-relaxed">
                 {plan.description}
               </p>
 
@@ -179,7 +179,7 @@ function Pricing() {
                 {plan.features.map((feature, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <FaCheckCircle className="text-emerald-500 text-sm" />
-                    <span className="text-gray-700 text-sm">{feature}</span>
+                    <span className="text-gray-700 dark:text-[#c8ccd8] text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -217,3 +217,6 @@ function Pricing() {
 }
 
 export default Pricing;
+
+
+

@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 function Timer({ timeLeft, totalTime }) {
@@ -21,3 +21,6 @@ function Timer({ timeLeft, totalTime }) {
 }
 
 export default Timer
+
+
+

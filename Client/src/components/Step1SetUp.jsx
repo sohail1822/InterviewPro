@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { motion } from "motion/react";
 import {
   FaUserTie,
@@ -85,33 +85,33 @@ function Step1SetUp({ onStart }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 px-4"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#111113] dark:to-[#1a1b1e] px-4"
     >
-      <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl grid md:grid-cols-2 overflow-hidden">
+      <div className="w-full max-w-6xl bg-white dark:bg-[#1a1b1e] rounded-3xl shadow-2xl grid md:grid-cols-2 overflow-hidden">
         <motion.div
           initial={{ x: -80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="relative bg-gradient-to-br from-green-50 to-green-100 p-12 flex flex-col justify-center"
+          className="relative bg-gradient-to-br from-green-50 to-green-100 dark:from-[#052e16] dark:to-gray-800 p-12 flex flex-col justify-center"
         >
-          <h2 className="text-4xl font-bold text-gray-800 mb-6">
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-[#f1f2f5] mb-6">
             Start Your AI Interview
           </h2>
 
-          <p className="text-gray-600 mb-10">
-            Practice real interview scenarios powered by AI. Improve
-            communication, technical skills, and confidence.
+          <p className="text-gray-600 dark:text-[#c8ccd8] mb-10">
+            Engage in realistic, AI-driven interview scenarios. Enhance your
+            communication proficiency, technical acumen, and overall confidence.
           </p>
 
           <div className="space-y-5">
             {[
               {
                 icon: <FaUserTie className="text-green-600 text-xl" />,
-                text: "Choose Role & Experience",
+                text: "Select Role & Experience Level",
               },
               {
                 icon: <FaMicrophoneAlt className="text-green-600 text-xl" />,
-                text: "Smart Voice Interview",
+                text: "Intelligent Voice Interview",
               },
               {
                 icon: <FaChartLine className="text-green-600 text-xl" />,
@@ -124,10 +124,10 @@ function Step1SetUp({ onStart }) {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 + index * 0.15 }}
                 whileHover={{ scale: 1.03 }}
-                className="flex items-center space-x-4 bg-white p-4 rounded-xl shadow-sm cursor-pointer"
+                className="flex items-center space-x-4 bg-white dark:bg-[#222428] p-4 rounded-xl shadow-sm cursor-pointer"
               >
                 {item.icon}
-                <span className="text-gray-700 font-medium">{item.text}</span>
+                <span className="text-gray-700 dark:text-[#e4e6ed] font-medium">{item.text}</span>
               </motion.div>
             ))}
           </div>
@@ -137,10 +137,10 @@ function Step1SetUp({ onStart }) {
           initial={{ x: 80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="p-12 bg-white"
+          className="p-12 bg-white dark:bg-[#1a1b1e]"
         >
-          <h2 className="text-3xl font-bold text-gray-800 mb-8">
-            Interview SetUp
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-[#f1f2f5] mb-8">
+            Interview Setup
           </h2>
 
           <div className="space-y-6">
@@ -149,8 +149,8 @@ function Step1SetUp({ onStart }) {
 
               <input
                 type="text"
-                placeholder="Enter role"
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition"
+                placeholder="Enter role (e.g. Frontend Developer)"
+                className="w-full pl-12 pr-4 py-3 border border-[#e2e4ea] dark:border-[#3d414d] dark:bg-[#222428] dark:text-[#f1f2f5] rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition"
                 onChange={(e) => setRole(e.target.value)}
                 value={role}
               />
@@ -162,7 +162,7 @@ function Step1SetUp({ onStart }) {
               <input
                 type="text"
                 placeholder="Experience (e.g. 2 years)"
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition"
+                className="w-full pl-12 pr-4 py-3 border border-[#e2e4ea] dark:border-[#3d414d] dark:bg-[#222428] dark:text-[#f1f2f5] rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition"
                 onChange={(e) => setExperience(e.target.value)}
                 value={experience}
               />
@@ -171,7 +171,7 @@ function Step1SetUp({ onStart }) {
             <select
               value={mode}
               onChange={(e) => setMode(e.target.value)}
-              className="w-full py-3 px-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition"
+              className="w-full py-3 px-4 border border-[#e2e4ea] dark:border-[#3d414d] dark:bg-[#222428] dark:text-[#f1f2f5] rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition"
             >
               <option value="Technical">Technical Interview</option>
               <option value="HR">HR Interview</option>
@@ -218,15 +218,15 @@ function Step1SetUp({ onStart }) {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-4"
+                className="bg-gray-50 dark:bg-[#222428] border border-[#e2e4ea] dark:border-[#3d414d] rounded-xl p-5 space-y-4"
               >
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-[#f1f2f5]">
                   Resume Analysis Result
                 </h3>
 
                 {projects.length > 0 && (
                   <div>
-                    <p className="font-medium text-gray-700 mb-1">Projects:</p>
+                    <p className="font-medium text-gray-700 dark:text-[#c8ccd8] mb-1">Projects:</p>
 
                     <ul className="list-disc list-inside text-gray-600 space-y-1">
                       {projects.map((p, i) => (
@@ -238,7 +238,7 @@ function Step1SetUp({ onStart }) {
 
                 {skills.length > 0 && (
                   <div>
-                    <p className="font-medium text-gray-700 mb-1">Skills:</p>
+                    <p className="font-medium text-gray-700 dark:text-[#c8ccd8] mb-1">Skills:</p>
 
                     <div className="flex flex-wrap gap-2">
                       {skills.map((s, i) => (
@@ -262,7 +262,7 @@ function Step1SetUp({ onStart }) {
               whileTap={{ scale: 0.95 }}
               className="w-full disabled:bg-gray-600 bg-green-600 hover:bg-green-700 text-white py-3 rounded-full text-lg font-semibold transition duration-300 shadow-md"
             >
-              {loading ? "Staring..." : "Start Interview"}
+              {loading ? "Starting..." : "Start Interview"}
             </motion.button>
           </div>
         </motion.div>
@@ -272,3 +272,6 @@ function Step1SetUp({ onStart }) {
 }
 
 export default Step1SetUp;
+
+
+

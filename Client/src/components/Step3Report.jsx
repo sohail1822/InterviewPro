@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
@@ -175,22 +175,22 @@ function Step3Report({ report }) {
     };
 
     return (
-        <div className="min-h-screen bg-linear-to-br from-gray-50 to-green-50 px-4 sm:px-6 lg:px-10 py-8">
+        <div className="min-h-screen bg-linear-to-br from-gray-50 to-green-50 dark:from-[#111113] dark:to-[#1a1b1e] px-4 sm:px-6 lg:px-10 py-8">
             <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="md:mb-10 w-full flex items-start gap-4 flex-wrap">
                     <button
                         onClick={() => navigate("/history")}
-                        className="mt-1 p-3 rounded-full bg-white shadow hover:shadow-md transition"
+                        className="mt-1 p-3 rounded-full bg-white dark:bg-[#222428] shadow hover:shadow-md transition"
                     >
                         <FaArrowLeft className="text-gray-600" />
                     </button>
 
                     <div>
-                        <h1 className="text-3xl font-bold flex-nowrap text-gray-800">
+                        <h1 className="text-3xl font-bold flex-nowrap text-gray-800 dark:text-[#f1f2f5]">
                             Interview Analytics Dashboard
                         </h1>
-                        <p className="text-gray-500 mt-2">
-                            AI-powered performance insights
+                        <p className="text-gray-500 dark:text-[#9499a8] mt-2">
+                            Comprehensive AI-driven performance insights
                         </p>
                     </div>
                 </div>
@@ -208,10 +208,10 @@ function Step3Report({ report }) {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8 text-center"
+                        className="bg-white dark:bg-[#222428] rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8 text-center"
                     >
                         <h3 className="text-gray-500 mb-4 sm:mb-6 text-sm sm:text-base">
-                            Overall Performance
+                            Overall Performance Evaluation
                         </h3>
                         <div className="relative w-20 h-20 sm:w-25 sm:h-25 mx-auto">
                             <CircularProgressbar
@@ -241,16 +241,16 @@ function Step3Report({ report }) {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8"
+                        className="bg-white dark:bg-[#222428] rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8"
                     >
-                        <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-6">
-                            Skill Evaluation
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-[#e4e6ed] mb-6">
+                            Core Competency Evaluation
                         </h3>
 
                         <div className="space-y-5">
                             {skills.map((s, i) => (
                                 <div key={i}>
-                                    <div className="flex justify-between mb-2 text-sm sm:text-base">
+                                    <div className="flex justify-between mb-2 text-sm sm:text-base dark:text-[#e4e6ed]">
                                         <span>{s.label}</span>
                                         <span className="font-semibold text-green-600">
                                             {s.value}
@@ -273,10 +273,10 @@ function Step3Report({ report }) {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-8"
+                        className="bg-white dark:bg-[#222428] rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-8"
                     >
-                        <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-4 sm:mb-6">
-                            Performance Trend
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-[#e4e6ed] mb-4 sm:mb-6">
+                            Performance Progression
                         </h3>
 
                         <div className="h-64 sm:h-72">
@@ -301,22 +301,22 @@ function Step3Report({ report }) {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="bg-white rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-8"
+                        className="bg-white dark:bg-[#222428] rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-8"
                     >
-                        <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-6">
-                            Question Breakdown
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-[#e4e6ed] mb-6">
+                            Detailed Question Analysis
                         </h3>
                         <div className="space-y-6">
                             {questionWiseScore.map((q, i) => (
                                 <div
                                     key={i}
-                                    className="bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-200"
+                                    className="bg-gray-50 dark:bg-[#2a2d33] p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-[#e2e4ea] dark:border-[#3d414d]"
                                 >
                                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
                                         <div>
-                                            <p className="text-xs text-gray-400">Question {i + 1}</p>
+                                            <p className="text-xs text-gray-400 dark:text-[#5f6370]">Question {i + 1}</p>
 
-                                            <p className="font-semibold text-gray-800 text-sm sm:text-base leading-relaxed">
+                                            <p className="font-semibold text-gray-800 dark:text-gray-100 text-sm sm:text-base leading-relaxed">
                                                 {q.question || "Question not available"}
                                             </p>
                                         </div>
@@ -326,11 +326,11 @@ function Step3Report({ report }) {
                                         </div>
                                     </div>
 
-                                    <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+                                    <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 p-4 rounded-lg">
                                         <p className="text-xs text-green-600 font-semibold mb-1">
                                             AI Feedback
                                         </p>
-                                        <p className="text-sm text-gray-700 leading-relaxed">
+                                        <p className="text-sm text-gray-700 dark:text-[#c8ccd8] leading-relaxed">
                                             {q.feedback && q.feedback.trim() !== ""
                                                 ? q.feedback
                                                 : "No feedback available for this question."}
@@ -347,3 +347,6 @@ function Step3Report({ report }) {
 }
 
 export default Step3Report;
+
+
+

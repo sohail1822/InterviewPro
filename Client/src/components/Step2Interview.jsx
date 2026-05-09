@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import maleVideo from "../assets/Videos/male-ai.mp4"
 import femaleVideo from "../assets/Videos/female-ai.mp4"
 import Timer from './Timer'
@@ -328,11 +328,11 @@ function Step2Interview({ interviewData, onFinish }) {
 
 
     return (
-        <div className='min-h-screen bg-linear-to-br from-emerald-50 via-white to-teal-100 flex items-center justify-center p-4 sm:p-6'>
-            <div className='w-full max-w-350 min-h-[80vh] bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col lg:flex-row overflow-hidden'>
+        <div className='min-h-screen bg-linear-to-br from-emerald-50 via-white to-teal-100 dark:from-[#111113] dark:via-[#1a1b1e] dark:to-[#111113] flex items-center justify-center p-4 sm:p-6'>
+            <div className='w-full max-w-350 min-h-[80vh] bg-white dark:bg-[#1a1b1e] rounded-3xl shadow-2xl border border-[#e2e4ea] dark:border-[#2e3038] flex flex-col lg:flex-row overflow-hidden'>
 
                 {/* video section */}
-                <div className='w-full lg:w-[35%] bg-white flex flex-col items-center p-6 space-y-6 border-r border-gray-200'>
+                <div className='w-full lg:w-[35%] bg-white dark:bg-[#1a1b1e] flex flex-col items-center p-6 space-y-6 border-r border-[#e2e4ea] dark:border-[#2e3038]'>
                     <div className='w-full max-w-md rounded-2xl overflow-hidden shadow-xl'>
                         <video
                             src={videoSource}
@@ -347,16 +347,16 @@ function Step2Interview({ interviewData, onFinish }) {
 
                     {/* subtitle */}
                     {subtitle && (
-                        <div className='w-full max-w-md bg-gray-50 border border-gray-200 rounded-xl p-4 shadow-sm'>
-                            <p className='text-gray-700 text-sm sm:text-base font-medium text-center leading-relaxed'>{subtitle}</p>
+                        <div className='w-full max-w-md bg-gray-50 dark:bg-[#222428] border border-[#e2e4ea] dark:border-[#3d414d] rounded-xl p-4 shadow-sm'>
+                            <p className='text-gray-700 dark:text-[#e4e6ed] text-sm sm:text-base font-medium text-center leading-relaxed'>{subtitle}</p>
                         </div>
                     )}
 
 
                     {/* timer Area */}
-                    <div className='w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-md p-6 space-y-5'>
+                    <div className='w-full max-w-md bg-white dark:bg-[#222428] border border-[#e2e4ea] dark:border-[#2e3038] rounded-2xl shadow-md p-6 space-y-5'>
                         <div className='flex justify-between items-center'>
-                            <span className='text-sm text-gray-500'>
+                            <span className='text-sm text-gray-500 dark:text-[#9499a8]'>
                                 Interview Status
                             </span>
                             {isAIPlaying && <span className='text-sm font-semibold text-emerald-600'>
@@ -376,7 +376,7 @@ function Step2Interview({ interviewData, onFinish }) {
                         <div className='grid grid-cols-2 gap-6 text-center'>
                             <div>
                                 <span className='text-2xl font-bold text-emerald-600'>{currentIndex + 1}</span>
-                                <span className='text-xs text-gray-400'>Current Questions</span>
+                                <span className='text-xs text-gray-400'>Current Question</span>
                             </div>
 
                             <div>
@@ -397,19 +397,19 @@ function Step2Interview({ interviewData, onFinish }) {
                     </h2>
 
 
-                    {!isIntroPhase && (<div className='relative mb-6 bg-gray-50 p-4 sm:p-6 rounded-2xl border border-gray-200 shadow-sm'>
-                        <p className='text-xs sm:text-sm text-gray-400 mb-2'>
+                    {!isIntroPhase && (<div className='relative mb-6 bg-gray-50 dark:bg-[#222428] p-4 sm:p-6 rounded-2xl border border-[#e2e4ea] dark:border-[#2e3038] shadow-sm'>
+                        <p className='text-xs sm:text-sm text-gray-400 dark:text-[#5f6370] mb-2'>
                             Question {currentIndex + 1} of {questions.length}
                         </p>
 
-                        <div className='text-base sm:text-lg font-semibold text-gray-800 leading-relaxed '>{currentQuestion?.question}</div>
+                        <div className='text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100 leading-relaxed '>{currentQuestion?.question}</div>
                     </div>)
                     }
                     <textarea
                         placeholder="Type your answer here..."
                         onChange={(e) => setAnswer(e.target.value)}
                         value={answer}
-                        className="flex-1 bg-gray-100 p-4 sm:p-6 rounded-2xl resize-none outline-none border border-gray-200 focus:ring-2 focus:ring-emerald-500 transition text-gray-800" />
+                        className="flex-1 bg-gray-100 dark:bg-[#222428] dark:text-[#f1f2f5] p-4 sm:p-6 rounded-2xl resize-none outline-none border border-[#e2e4ea] dark:border-[#3d414d] focus:ring-2 focus:ring-emerald-500 transition text-gray-800" />
 
 
                     {!feedback ? (<div className='flex items-center gap-4 mt-6'>
@@ -453,3 +453,5 @@ function Step2Interview({ interviewData, onFinish }) {
 }
 
 export default Step2Interview
+
+

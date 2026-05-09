@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import Navbar from '../components/Navbar';
 import { useSelector } from 'react-redux';
 import { motion } from 'motion/react'
@@ -7,7 +7,10 @@ import {
     BsMic,
     BsClock,
     BsBarChart,
-    BsFileEarmarkText
+    BsFileEarmarkText,
+    BsArrowRight,
+    BsShieldCheck,
+    BsLightning
 } from "react-icons/bs"
 import { HiSparkles } from 'react-icons/hi';
 import { useNavigate } from 'react-router-dom';
@@ -23,287 +26,250 @@ import pdfImg from "../assets/pdf.png";
 import analyticsImg from "../assets/history.png";
 import Footer from '../components/Footer';
 
-
+const fadeUp = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+}
 
 function Home() {
-
     const { userData } = useSelector((state) => state.user)
     const [showAuth, setShowAuth] = useState(false);
     const navigate = useNavigate();
+
+    const handleStart = () => {
+        if (!userData) { setShowAuth(true); return; }
+        navigate("/interview")
+    }
+    const handleHistory = () => {
+        if (!userData) { setShowAuth(true); return; }
+        navigate("/history")
+    }
+
     return (
-        <div className='min-h-screen bg-[#f3f3f3] flex flex-col'>
+        <div className='min-h-screen bg-[#f7f8fa] dark:bg-[#111113] flex flex-col'>
             <Navbar />
 
-            <div className='flex-1 px-6 py-20'>
-                <div className='max-w-6xl mx-auto'>
-                    <div className='flex justify-center mb-6'>
-                        <div className='bg-gray-100 text-gray-600 text-sm px-4 py-2 rounded-full flex items-center gap-2'>
-                            <HiSparkles size={18} className='bg-green-50 text-green-600' />
-                            Welcome to InterviewPro.AI - Your Ultimate AI-Powered Interview Companion!
-                        </div>
-                    </div>
+            <div className='flex-1 px-5 py-16 md:py-24'>
+                <div className='max-w-5xl mx-auto'>
 
-                    <div className='text-center mb-28'>
-                        <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
+                    {/* ── Hero ───────────────────────────── */}
+                    <div className='text-center mb-24'>
+                        <motion.div
+                            initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className='text-4xl md:text-6xl font-semibold leading-tight max-w-4xl mx-auto'>
-                            Ace Your Interviews with
-                            <span className='relative  inline-block '>
-                                <span className='bg-green-100 text-green-600 px-5 py-1 rounded-full'>
-                                    AI Intelligence
-                                </span>
+                            transition={{ duration: 0.5 }}
+                            className='inline-flex items-center gap-2 text-[14px] font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-900 px-3 py-1.5 rounded-full mb-8'
+                        >
+                            <HiSparkles size={12} />
+                            AI-Powered Interview Preparation Platform
+                        </motion.div>
+
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className='text-4xl md:text-6xl font-semibold leading-[1.12] tracking-tight text-[#0d0f14] dark:text-[#f1f2f5] max-w-3xl mx-auto mb-6'
+                        >
+                            Master Your Next Interview with{' '}
+                            <span className='bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent'>
+                                AI
                             </span>
                         </motion.h1>
 
                         <motion.p
-                            initial={{ opacity: 0, y: 10 }}
+                            initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className='text-gray-500 text-lg md:text-xl mt-6 max-w-2xl mx-auto'>
-                            InterviewPro.AI is your ultimate interview companion, offering personalized practice sessions, instant feedback, and a powerful question bank to help you ace your interviews with confidence.
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className='text-[18px] text-[#4b5060] dark:text-[#9499a8] max-w-xl mx-auto leading-relaxed mb-10'
+                        >
+                            Experience hyper-realistic mock interviews tailored to your target role. Receive instant, actionable feedback to land your dream job.
                         </motion.p>
 
-
-                        <div className='flex flex-wrap justify-center gap-4 mt-10'>
+                        <motion.div
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className='flex flex-wrap justify-center gap-3'
+                        >
                             <motion.button
-                                onClick={() => {
-                                    if (!userData) {
-                                        setShowAuth(true);
-                                        return;
-                                    }
-                                    navigate("/interview")
-                                }}
-                                whileHover={{ opacity: 0.9, scale: 1.03 }}
-                                whileTap={{ opacity: 1, scale: 0.95 }}
-                                className='bg-black text-white px-10 py-3 rounded-full hover:opacity-90 transition shadow-md'>
-                                Start Interview
-                            </motion.button >
-
-                            <motion.button
-                                onClick={() => {
-                                    if (!userData) {
-                                        setShowAuth(true)
-                                        return;
-                                    }
-                                    navigate("/history")
-                                }}
-                                whileHover={{ opacity: 0.9, scale: 1.03 }}
-                                whileTap={{ opacity: 1, scale: 0.98 }}
-                                className='border border-gray-500 px-10 py-3 rounded-full hover:bg-gray-100 transition'>
-                                View History
-
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.97 }}
+                                onClick={handleStart}
+                                className='flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-xl text-[16px] font-medium transition-colors shadow-sm shadow-emerald-500/20'
+                            >
+                                Start Mock Interview <BsArrowRight size={14} />
                             </motion.button>
-                        </div>
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.97 }}
+                                onClick={handleHistory}
+                                className='flex items-center gap-2 bg-white dark:bg-[#1a1b1e] hover:bg-[#f0f1f5] dark:hover:bg-[#222428] border border-[#e2e4ea] dark:border-[#2e3038] text-[#0d0f14] dark:text-[#f1f2f5] px-6 py-2.5 rounded-xl text-[16px] font-medium transition-colors'
+                            >
+                                View Performance History
+                            </motion.button>
+                        </motion.div>
+
+                        {/* Social Proof Strip */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className='flex flex-wrap justify-center items-center gap-6 mt-10 text-[14px] text-[#8b909e] dark:text-[#5f6370]'
+                        >
+                            {[
+                                { icon: <BsShieldCheck size={13} className='text-emerald-500' />, label: 'Secure & Private' },
+                                { icon: <BsLightning size={13} className='text-amber-500' />, label: 'Real-time AI Feedback' },
+                                { icon: <HiSparkles size={13} className='text-indigo-400' />, label: 'Resume-tailored Questions' },
+                            ].map((item, i) => (
+                                <div key={i} className='flex items-center gap-1.5'>
+                                    {item.icon}
+                                    <span>{item.label}</span>
+                                </div>
+                            ))}
+                        </motion.div>
                     </div>
 
-                    <div className='flex flex-col md:flex-row justify-center items-center gap-10 mb-28'>
-                        {
-                            [
+                    {/* ── How It Works ───────────────────── */}
+                    <motion.div {...fadeUp} transition={{ duration: 0.5 }} className='mb-24'>
+                        <div className='text-center mb-12'>
+                            <span className='text-[13px] font-semibold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase'>How It Works</span>
+                            <h2 className='text-2xl md:text-3xl font-semibold text-[#0d0f14] dark:text-[#f1f2f5] mt-2 tracking-tight'>
+                                Three steps to interview mastery
+                            </h2>
+                        </div>
+
+                        <div className='flex flex-col md:flex-row justify-center items-stretch gap-4'>
+                            {[
                                 {
-                                    icon: <BsRobot size={24} />,
-                                    step: "STEP 1",
-                                    title: "Role & Experience Setup",
-                                    desc: "Choose your target role and experience level—AI instantly tailors question difficulty and interview style."
+                                    icon: <BsRobot size={18} />,
+                                    step: "01",
+                                    title: "Role & Experience Configuration",
+                                    desc: "Specify your target position and experience level. Our AI dynamically adjusts difficulty and interview format to match."
                                 },
                                 {
-                                    icon: <BsMic size={24} />,
-                                    step: "STEP 2",
-                                    title: "AI-Powered Voice Interview",
-                                    desc: "Engage in a realistic voice interview with intelligent follow-ups that adapt to your responses in real time."
+                                    icon: <BsMic size={18} />,
+                                    step: "02",
+                                    title: "Interactive Voice Interview",
+                                    desc: "Participate in a lifelike voice interview featuring intelligent, adaptive follow-up questions based on your responses."
                                 },
                                 {
-                                    icon: <BsClock size={24} />,
-                                    step: "STEP 3",
-                                    title: "Timed Interview Simulation",
-                                    desc: "Experience real interview pressure with structured timing, helping you improve speed, clarity, and confidence."
+                                    icon: <BsClock size={18} />,
+                                    step: "03",
+                                    title: "Timed Pressure Simulation",
+                                    desc: "Experience authentic interview constraints with timed sessions designed to enhance articulation and confidence."
                                 }
                             ].map((item, index) => (
-                                <motion.div key={index}
-                                    initial={{ opacity: 0, y: 60 }}
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6 + index * 0.2 }}
-                                    whileHover={{ rotate: 0, scale: 1.06 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                                    whileHover={{ y: -3 }}
+                                    className='flex-1 bg-white dark:bg-[#1a1b1e] border border-[#e2e4ea] dark:border-[#2e3038] rounded-2xl p-6 relative'
+                                    style={{ boxShadow: '0 1px 3px rgba(13,15,20,0.05)' }}
+                                >
+                                    <div className='flex items-center gap-3 mb-4'>
+                                        <div className='w-8 h-8 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 rounded-lg flex items-center justify-center'>
+                                            {item.icon}
+                                        </div>
+                                        <span className='text-[13px] font-bold tracking-widest text-[#8b909e] dark:text-[#5f6370]'>STEP {item.step}</span>
+                                    </div>
+                                    <h3 className='font-semibold text-[17px] text-[#0d0f14] dark:text-[#f1f2f5] mb-2 leading-snug'>{item.title}</h3>
+                                    <p className='text-[15px] text-[#8b909e] dark:text-[#5f6370] leading-relaxed'>{item.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
 
-                                    className={`
-        relative bg-white rounded-3xl border-2 border-green-100 
-        hover:border-green-500 p-10 w-80 max-w-[90%] shadow-md hover:shadow-2xl 
-        transition-all duration-300
-        ${index === 0 ? "rotate-[-4deg]" : ""}
-        ${index === 1 ? "rotate-[3deg] md:-mt-6 shadow-xl" : ""}
-        ${index === 2 ? "rotate-[-3deg]" : ""}
-      `}>
+                    {/* ── AI Features ────────────────────── */}
+                    <motion.div {...fadeUp} className='mb-24'>
+                        <div className='text-center mb-12'>
+                            <span className='text-[13px] font-semibold tracking-widest text-indigo-500 dark:text-indigo-400 uppercase'>Capabilities</span>
+                            <h2 className='text-2xl md:text-3xl font-semibold text-[#0d0f14] dark:text-[#f1f2f5] mt-2 tracking-tight'>
+                                Advanced AI Features
+                            </h2>
+                        </div>
 
-                                    <div className='absolute -top-8 left-1/2 -translate-x-1/2 bg-white border-2 border-green-500 text-green-600 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg'>
-                                        {item.icon}</div>
-                                    <div className='pt-10 text-center'>
-                                        <div className='text-xs text-green-600 font-semibold mb-2 tracking-wider'>{item.step}</div>
-                                        <h3 className='font-semibold mb-3 text-lg'>{item.title}</h3>
-                                        <p className='text-sm text-gray-500 leading-relaxed'>{item.desc}</p>
+                        <div className='grid md:grid-cols-2 gap-4'>
+                            {[
+                                { image: evalImg, icon: <BsBarChart size={16} />, title: "Comprehensive Answer Evaluation", desc: "Receive immediate, actionable feedback assessing your communication skills, technical accuracy, and overall confidence." },
+                                { image: resumeImg, icon: <BsFileEarmarkText size={16} />, title: "Resume-Tailored Questions", desc: "Answer dynamically generated questions based on your resume, emphasizing your past projects and professional experience." },
+                                { image: pdfImg, icon: <BsFileEarmarkText size={16} />, title: "In-Depth Performance Reports", desc: "Export comprehensive PDF reports detailing your strengths, areas for improvement, and an actionable roadmap for growth." },
+                                { image: analyticsImg, icon: <BsBarChart size={16} />, title: "Progress Analytics", desc: "Monitor your improvement over time with visual progress trends and detailed topic-by-topic breakdowns." }
+                            ].map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                                    whileHover={{ y: -2 }}
+                                    className='bg-white dark:bg-[#1a1b1e] border border-[#e2e4ea] dark:border-[#2e3038] rounded-2xl p-6 flex items-center gap-5'
+                                    style={{ boxShadow: '0 1px 3px rgba(13,15,20,0.05)' }}
+                                >
+                                    <div className='w-16 h-16 flex-shrink-0'>
+                                        <img src={item.image} alt={item.title} className='w-full h-full object-contain' />
+                                    </div>
+                                    <div>
+                                        <div className='flex items-center gap-2 mb-1.5'>
+                                            <div className='w-6 h-6 bg-indigo-50 dark:bg-indigo-950/50 text-indigo-500 dark:text-indigo-400 rounded-md flex items-center justify-center'>
+                                                {item.icon}
+                                            </div>
+                                            <h3 className='font-semibold text-[16px] text-[#0d0f14] dark:text-[#f1f2f5]'>{item.title}</h3>
+                                        </div>
+                                        <p className='text-[14px] text-[#8b909e] dark:text-[#5f6370] leading-relaxed'>{item.desc}</p>
                                     </div>
                                 </motion.div>
-                            ))
-                        }
-                    </div>
+                            ))}
+                        </div>
+                    </motion.div>
 
-
-
-                    <div className='mb-32'>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className='text-4xl font-semibold text-center mb-16'>
-                            Advanced AI{" "}
-                            <span className="text-green-600">Capabilities</span>
-
-                        </motion.h2>
-
-                        <div className='max-w-5xl mx-auto grid md:grid-cols-2 gap-8'>
-                            {
-                                [
-                                    {
-                                        image: evalImg,
-                                        icon: <BsBarChart size={20} />,
-                                        title: "AI-Powered Answer Evaluation",
-                                        desc: "Get instant feedback on communication, technical depth, and confidence with actionable insights."
-                                    },
-                                    {
-                                        image: resumeImg,
-                                        icon: <BsFileEarmarkText size={20} />,
-                                        title: "Resume-Driven Interviews",
-                                        desc: "Personalized questions generated from your resume, focusing on your projects and real experience."
-                                    },
-                                    {
-                                        image: pdfImg,
-                                        icon: <BsFileEarmarkText size={20} />,
-                                        title: "Detailed PDF Reports",
-                                        desc: "Download structured reports with strengths, weaknesses, and clear steps to improve."
-                                    },
-                                    {
-                                        image: analyticsImg,
-                                        icon: <BsBarChart size={20} />,
-                                        title: "Performance Analytics",
-                                        desc: "Track your growth with detailed insights, progress trends, and topic-wise analysis."
-                                    }
-                                ].map((item, index) => (
-                                    <motion.div key={index}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        whileHover={{ scale: 1.02 }}
-                                        className='bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all'>
-                                        <div className='flex flex-col md:flex-row items-center gap-4'>
-                                            <div className='w-full md:w-1/2 flex justify-center'>
-                                                <img src={item.image} alt={item.title} className='w-full h-auto object-contain max-h-64' />
-                                            </div>
-
-                                            <div className='w-full md:w-1/2'>
-                                                <div className='bg-green-50 text-green-600 w-12 h-12 rounded-xl flex items-center justify-center mb-6'>
-                                                    {item.icon}
-                                                </div>
-                                                <h3 className='font-semibold mb-3 text-xl'>{item.title}</h3>
-                                                <p className='text-gray-500 text-sm leading-relaxed'>{item.desc}</p>
-                                            </div>
-
-                                        </div>
-
-
-                                    </motion.div>
-                                ))
-                            }
+                    {/* ── Interview Modes ─────────────────── */}
+                    <motion.div {...fadeUp} className='mb-16'>
+                        <div className='text-center mb-12'>
+                            <span className='text-[13px] font-semibold tracking-widest text-emerald-600 dark:text-emerald-400 uppercase'>Versatile</span>
+                            <h2 className='text-2xl md:text-3xl font-semibold text-[#0d0f14] dark:text-[#f1f2f5] mt-2 tracking-tight'>
+                                Multiple Interview Modes
+                            </h2>
                         </div>
 
-
-                    </div>
-
-
-
-                    <div className='mb-32'>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            className='text-4xl font-semibold text-center mb-16'>
-                            Multiple Interview{" "}
-                            <span className="text-green-600">Modes</span>
-
-                        </motion.h2>
-
-                        <div className='grid md:grid-cols-2 gap-10'>
-                            {
-                                [
-                                    {
-                                        img: hrImg,
-                                        title: "HR Interview Mode",
-                                        desc: "Practice behavioral questions with structured feedback on communication, clarity, and cultural fit."
-                                    },
-                                    {
-                                        img: techImg,
-                                        title: "Technical Interview Mode",
-                                        desc: "Face role-specific technical questions designed to test problem-solving and core concepts."
-                                    },
-                                    {
-                                        img: confidenceImg,
-                                        title: "Confidence Insights",
-                                        desc: "Analyze tone, pace, and speaking patterns to improve confidence and delivery."
-                                    },
-                                    {
-                                        img: creditImg,
-                                        title: "Flexible Credits System",
-                                        desc: "Access premium interviews with a simple credit-based system—pay only for what you use."
-                                    }
-                                ].map((mode, index) => (
-                                    <motion.div key={index}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        whileHover={{ y: -6 }}
-                                        className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
-
-                                        <div className='flex items-center justify-between gap-6'>
-                                            <div className="w-1/2">
-                                                <h3 className="font-semibold text-xl mb-3">
-                                                    {mode.title}
-                                                </h3>
-
-                                                <p className="text-gray-500 text-sm leading-relaxed">
-                                                    {mode.desc}
-                                                </p>
-                                            </div>
-
-                                            {/* RIGHT IMAGE */}
-                                            <div className="w-1/2 flex justify-end">
-                                                <img
-                                                    src={mode.img}
-                                                    alt={mode.title}
-                                                    className="w-28 h-28 object-contain"
-                                                />
-                                            </div>
-
-
-
-                                        </div>
-
-
-                                    </motion.div>
-                                ))
-                            }
+                        <div className='grid md:grid-cols-2 gap-4'>
+                            {[
+                                { img: hrImg, title: "Behavioral (HR) Mode", desc: "Prepare for behavioral assessments with constructive feedback on your communication style, clarity, and cultural alignment." },
+                                { img: techImg, title: "Technical Evaluation Mode", desc: "Tackle role-specific technical questions engineered to rigorously test your problem-solving abilities and core knowledge." },
+                                { img: confidenceImg, title: "Delivery & Tone Analysis", desc: "Gain insights into your vocal tone, pacing, and speaking patterns to project maximum confidence during interviews." },
+                                { img: creditImg, title: "Flexible Credit System", desc: "Access premium interview sessions through a transparent, pay-as-you-go credit model with no hidden fees." }
+                            ].map((mode, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: index * 0.08 }}
+                                    whileHover={{ y: -2 }}
+                                    className='bg-white dark:bg-[#1a1b1e] border border-[#e2e4ea] dark:border-[#2e3038] rounded-2xl p-6 flex items-center justify-between gap-4'
+                                    style={{ boxShadow: '0 1px 3px rgba(13,15,20,0.05)' }}
+                                >
+                                    <div>
+                                        <h3 className='font-semibold text-[17px] text-[#0d0f14] dark:text-[#f1f2f5] mb-1.5'>{mode.title}</h3>
+                                        <p className='text-[14px] text-[#8b909e] dark:text-[#5f6370] leading-relaxed'>{mode.desc}</p>
+                                    </div>
+                                    <img src={mode.img} alt={mode.title} className='w-16 h-16 object-contain flex-shrink-0 opacity-90' />
+                                </motion.div>
+                            ))}
                         </div>
-
-
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>
 
             {showAuth && <AuthModel onClose={() => setShowAuth(false)} />}
-
-
             <Footer />
         </div>
     )
 }
 
 export default Home
+

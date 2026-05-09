@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+﻿import React, { use } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
@@ -8,7 +8,7 @@ import Pricing from './pages/Pricing.jsx'
 import InterviewReport from './pages/InterviewReport.jsx'
 import axios from 'axios';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserData } from './redux/userSlice.js';
 
 export const ServerUrl = 'https://interviewpro-rp0p.onrender.com';
@@ -16,6 +16,17 @@ export const ServerUrl = 'https://interviewpro-rp0p.onrender.com';
 function App() {
 
   const dispatch = useDispatch();
+  const { mode } = useSelector((state) => state.theme);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (mode === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [mode]);
+
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -41,3 +52,6 @@ function App() {
 }
 
 export default App
+
+
+
